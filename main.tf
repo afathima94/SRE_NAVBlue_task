@@ -4,14 +4,14 @@ module "vpc" {
   eu_availability_zone = var.eu_availability_zone
 }
 
-module "security_group" {
-  source                = "./securityGroups"
+module "sgs" {
+  source                = "./sgs"
   publicSubnetCidrBlock = tolist(module.vpc.publicSubnetCidrBlock)
   vpc_id                = module.vpc.nginxGiteaVpcId
 }
 
-module "ec2" {
-  source                        = "./ec2"
+module "ec2_instance" {
+  source                        = "./ec2_instance"
   nginxGiteaSgId                = module.security_group.nginxGiteaSecurityGroupId
   nginxGiteaSubnetId            = tolist(module.vpc.nginxGiteaPublicSubnetId)[0]
   user_data_install_gitea_nginx = templatefile("./template/ec2_gitea_nginx.sh", {})
