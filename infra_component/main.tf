@@ -12,7 +12,7 @@ module "sgs" {
 
 module "ec2_instance" {
   source                        = "./ec2_instance"
-  nginxGiteaSgId                = module.security_group.nginxGiteaSecurityGroupId
+  nginxGiteaSgId                = module.sgs.nginxGiteaSecurityGroupId
   nginxGiteaSubnetId            = tolist(module.vpc.nginxGiteaPublicSubnetId)[0]
-  user_data_install_gitea_nginx = templatefile("./template/ec2_gitea_nginx.sh", {})
+  user_data_install_gitea_nginx = file("ec2_gitea.sh")
 }

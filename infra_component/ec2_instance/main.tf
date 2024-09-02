@@ -22,5 +22,5 @@ resource "aws_instance" "nginxGiteaEc2Instance" {
 
 resource "aws_key_pair" "terraform_nav_public_key" {
   key_name   = "terraform_nav"
-  public_key = "${file("terraform_nav.pub")}"
+  public_key = file("terraform_nav.pub")
 }
