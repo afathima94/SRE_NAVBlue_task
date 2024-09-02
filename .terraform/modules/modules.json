@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"ec2","Source":"./ec2","Dir":""},{"Key":"ec2_instance","Source":"./ec2_instance","Dir":""},{"Key":"security_group","Source":"./securityGroups","Dir":""},{"Key":"sgs","Source":"./sgs","Dir":""},{"Key":"vpc","Source":"./vpc","Dir":""}]}
