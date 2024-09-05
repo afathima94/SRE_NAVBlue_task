@@ -1,0 +1,17 @@
+---
+
+- hosts: localhost
+  remote_user: ec2-user
+  tasks:
+    - name: Configure nginx server
+      delegate_to: "<Server IP>"
+      become: true
+      block:
+        - name: Copy script
+          copy:
+            src: configure_nginx.sh
+            dest: /tmp/nginx_conf.sh
+            mode: 0777
+
+        - name: Run shell script on remote server
+          shell: sh /tmp/nginx_conf.sh
